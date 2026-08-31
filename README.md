@@ -13,6 +13,7 @@ Professional marketing site for ClubGamerZone, focused on software development, 
 - React entry point: `src/main.tsx`
 - Customer AI chat interface: `src/ChatWidget.tsx`
 - Secure AI server function and business knowledge: `netlify/functions/chat.mjs`
+- Project inquiry form and submission states: `src/LeadForm.tsx`
 
 ## Local development
 
@@ -58,6 +59,12 @@ Optional environment variable:
 After adding or changing an environment variable in Netlify, trigger a new deploy. To change the assistant's services, tone, contact information, or qualification questions, edit `SYSTEM_PROMPT` in `netlify/functions/chat.mjs`.
 
 The function limits the browser to the latest ten messages, caps each message at 600 characters, caps model output, disables API response storage, and avoids promising prices or schedules. The interface falls back to ClubGamerZone's email and phone number if the AI service is unavailable.
+
+## Customer inquiries
+
+The contact section provides three ways to reach ClubGamerZone: a Netlify Forms project-inquiry form, direct email/phone links, and the AI assistant. `index.html` contains the hidden static form definition Netlify needs for build-time form detection; `src/LeadForm.tsx` contains the visible React form and its success/error states. Submissions appear in **Netlify → clubgamerzone-webapp → Forms**.
+
+The public portfolio section lists only projects and client work that were already presented on the previous public ClubGamerZone website. Add a client name only after confirming that the relationship may be advertised publicly.
 
 ## Domain and email safety
 
