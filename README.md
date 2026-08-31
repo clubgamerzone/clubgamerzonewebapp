@@ -11,6 +11,8 @@ Professional marketing site for ClubGamerZone, focused on software development, 
 - Existing ClubGamerZone project art and logo: `public/assets/`
 - Netlify build rules and security headers: `netlify.toml`
 - React entry point: `src/main.tsx`
+- Customer AI chat interface: `src/ChatWidget.tsx`
+- Secure AI server function and business knowledge: `netlify/functions/chat.mjs`
 
 ## Local development
 
@@ -39,7 +41,23 @@ The intended workflow is Netlify continuous deployment from the GitHub repositor
 
 `https://github.com/clubgamerzone/clubgamerzonewebapp`
 
-Once connected, each push to the production branch triggers a new deployment. No database, server, or runtime secrets are required for the current site.
+Once connected, each push to the production branch triggers a new deployment. The marketing pages need no database; the AI assistant requires the server-side secret described below.
+
+## Customer AI assistant
+
+The floating chat widget sends recent conversation messages to a Netlify Function. The function—not the visitor's browser—calls OpenAI's Responses API. This protects the API key and keeps the ClubGamerZone business instructions in server-side code.
+
+Required Netlify environment variable:
+
+- `OPENAI_API_KEY`: a project API key created in the OpenAI Platform. Mark it as a secret and do not put it in GitHub or client code.
+
+Optional environment variable:
+
+- `OPENAI_MODEL`: defaults to `gpt-5.4-nano`, chosen for a fast, economical customer-inquiry experience.
+
+After adding or changing an environment variable in Netlify, trigger a new deploy. To change the assistant's services, tone, contact information, or qualification questions, edit `SYSTEM_PROMPT` in `netlify/functions/chat.mjs`.
+
+The function limits the browser to the latest ten messages, caps each message at 600 characters, caps model output, disables API response storage, and avoids promising prices or schedules. The interface falls back to ClubGamerZone's email and phone number if the AI service is unavailable.
 
 ## Domain and email safety
 

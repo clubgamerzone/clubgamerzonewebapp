@@ -11,6 +11,7 @@ import {
   Phone,
   Sparkles,
 } from 'lucide-react';
+import ChatWidget from '../src/ChatWidget';
 
 const services = [
   { icon: Code2, title: 'Product engineering', copy: 'Web, mobile and desktop software built around real business outcomes.' },
@@ -79,6 +80,7 @@ export default function Home() {
       <section className="contact-section" id="contact"><div className="contact-glow" aria-hidden="true" /><div className="container contact-layout"><div><p className="kicker">Start a conversation</p><h2>Have an idea worth building?</h2><p>Tell us what you want to create, improve or automate. We’ll help you find the clearest path forward.</p><a className="button button-primary" href="mailto:admin@clubgamerzone.com?subject=New%20project%20inquiry">admin@clubgamerzone.com <ArrowRight size={18} /></a></div><aside className="contact-card"><div><Mail size={19} /><span><small>Email</small><a href="mailto:admin@clubgamerzone.com">admin@clubgamerzone.com</a></span></div><div><Phone size={19} /><span><small>Call or WhatsApp</small><a href="tel:+573012731004">+57 301 273 1004</a></span></div><div><MapPin size={19} /><span><small>Studio</small>Barranquilla, Colombia</span></div><div><CloudCog size={19} /><span><small>Availability</small>Monday–Saturday, 8:00–17:00</span></div></aside></div></section>
 
       <footer><div className="container footer-inner"><img src="/assets/logo.png" alt="ClubGamerZone" /><p>Software, AI & interactive products.</p><div className="socials"><a href="https://www.linkedin.com/company/clubgamerzonesoftware/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/clubgamerzone/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.youtube.com/c/clubgamerzone" target="_blank" rel="noreferrer">YouTube</a><a href="https://www.facebook.com/clubgamerzone/" target="_blank" rel="noreferrer">Facebook</a></div><small>© {new Date().getFullYear()} ClubGamerZone. All rights reserved.</small></div></footer>
+      <ChatWidget />
     </main>
   );
 }
