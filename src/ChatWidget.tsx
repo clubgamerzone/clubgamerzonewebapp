@@ -5,8 +5,8 @@ import type { Locale } from '../app/page';
 type ChatMessage = { role: 'assistant' | 'user'; content: string };
 
 const copy = {
-  en: { greeting: 'Hi! I’m the ClubGamerZone assistant. Tell me what you want to build, improve, or automate, and I’ll help you explore the next step.', suggestions: ['Can you build my app idea?', 'How can AI help my business?', 'I need a website'], ready: 'Ready to help', close: 'Close chat', thinking: 'Thinking…', message: 'Your message', placeholder: 'What would you like to build?', send: 'Send message', disclaimer: 'AI can make mistakes. Project estimates are confirmed by our team.', launcher: 'Ask our AI', openLabel: 'Ask our AI assistant', closeLabel: 'Close AI assistant', fallback: 'I’m having trouble connecting right now. Please email admin@clubgamerzone.com or call +57 301 273 1004 and our team will help you.', panel: 'Chat with ClubGamerZone' },
-  es: { greeting: '¡Hola! Soy el asistente de ClubGamerZone. Cuéntame qué quieres construir, mejorar o automatizar y te ayudaré a explorar el siguiente paso.', suggestions: ['¿Pueden desarrollar mi idea de aplicación?', '¿Cómo puede ayudar la IA a mi negocio?', 'Necesito un sitio web'], ready: 'Listo para ayudarte', close: 'Cerrar chat', thinking: 'Pensando…', message: 'Tu mensaje', placeholder: '¿Qué te gustaría construir?', send: 'Enviar mensaje', disclaimer: 'La IA puede cometer errores. Nuestro equipo confirma las estimaciones del proyecto.', launcher: 'Pregunta a nuestra IA', openLabel: 'Consultar a nuestro asistente de IA', closeLabel: 'Cerrar asistente de IA', fallback: 'Tengo problemas para conectarme en este momento. Escríbenos a admin@clubgamerzone.com o llama al +57 301 273 1004 y nuestro equipo te ayudará.', panel: 'Chatea con ClubGamerZone' },
+  en: { greeting: 'Hi! Welcome to ClubGamerZone. Tell us what you want to build, improve, or automate, and we’ll help you define the best next step.', suggestions: ['Can you build my app idea?', 'How can AI help my business?', 'I need a website'], ready: 'Ready to talk', close: 'Close chat', thinking: 'Writing…', message: 'Your message', placeholder: 'What would you like to build?', send: 'Send message', disclaimer: 'AI-powered conversation in our team’s voice. We personally confirm all project details and estimates.', launcher: 'Let’s talk', openLabel: 'Talk with ClubGamerZone', closeLabel: 'Close ClubGamerZone chat', fallback: 'We’re having trouble connecting right now. Please email us at admin@clubgamerzone.com or call +57 301 273 1004 and we’ll help you personally.', panel: 'Chat with ClubGamerZone' },
+  es: { greeting: '¡Hola! Bienvenido a ClubGamerZone. Cuéntanos qué quieres construir, mejorar o automatizar y te ayudaremos a definir el mejor siguiente paso.', suggestions: ['¿Pueden desarrollar mi idea de aplicación?', '¿Cómo puede ayudar la IA a mi negocio?', 'Necesito un sitio web'], ready: 'Listos para conversar', close: 'Cerrar chat', thinking: 'Escribiendo…', message: 'Tu mensaje', placeholder: '¿Qué te gustaría construir?', send: 'Enviar mensaje', disclaimer: 'Conversación impulsada por IA con la voz de nuestro equipo. Confirmamos personalmente todos los detalles y estimaciones.', launcher: 'Hablemos', openLabel: 'Hablar con ClubGamerZone', closeLabel: 'Cerrar chat de ClubGamerZone', fallback: 'Tenemos problemas para conectarnos en este momento. Escríbenos a admin@clubgamerzone.com o llama al +57 301 273 1004 y te ayudaremos personalmente.', panel: 'Chatea con ClubGamerZone' },
 } as const;
 
 export default function ChatWidget({ locale }: { locale: Locale }) {
@@ -64,7 +64,7 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
       {open && (
         <section className="chat-panel" aria-label={c.panel}>
           <header className="chat-header">
-            <div className="chat-identity"><span><Bot size={20} /></span><div><strong>ClubGamerZone AI</strong><small><i /> {c.ready}</small></div></div>
+            <div className="chat-identity"><span><Bot size={20} /></span><div><strong>ClubGamerZone</strong><small><i /> {c.ready}</small></div></div>
             <button onClick={() => setOpen(false)} aria-label={c.close}><X size={20} /></button>
           </header>
           <div className="chat-body" aria-live="polite">
@@ -88,4 +88,5 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
     </div>
   );
 }
+
 
