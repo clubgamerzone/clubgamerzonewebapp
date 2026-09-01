@@ -30,3 +30,5 @@ Responsive rules are at the end of `app/globals.css`.
 ## Validation
 
 Run `npm run build` after changing translations or responsive styles. Check both languages and narrow widths before publishing.
+
+The build also runs `scripts/prepare-sites.mjs`, which adds the static worker entry point required by Sites hosting. Netlify continues to publish the same files from `dist`.
