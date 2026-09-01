@@ -8,6 +8,8 @@ The server-side implementation is `netlify/functions/chat.mjs`. It uses Netlify 
 
 The system prompt answers in Jose Demoya's warm, practical voice while representing ClubGamerZone with first-person language such as “we” and “our.” Replies should feel like a concise founder conversation: acknowledge the visitor's specific idea, give useful guidance, and ask one natural discovery question. Avoid generic AI-style introductions, long canned lists, invented personal experiences, and repeated self-introductions.
 
+Language is determined from the visitor's latest message, not from ClubGamerZone's Colombian location or earlier assistant messages. English questions receive English answers and Spanish questions receive Spanish answers.
+
 The widget remains transparent that the conversation is AI-powered, while making clear that the team personally confirms project details and estimates. Its English and Spanish greeting, launcher, status, and disclaimer copy live in `src/ChatWidget.tsx`.
 
 ## Credentials
