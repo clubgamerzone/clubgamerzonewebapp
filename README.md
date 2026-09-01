@@ -15,7 +15,7 @@ Professional marketing site for ClubGamerZone, focused on software development, 
 - Secure AI server function and business knowledge: `netlify/functions/chat.mjs`
 
 The hero motion system is implemented entirely in `app/page.tsx` and `app/globals.css`: layered ambient light, drifting grid and particles, staggered content reveals, a multi-ring product orbit, data labels, and reduced-motion fallbacks. No animation library is required.
-- Project inquiry form and submission states: `src/LeadForm.tsx`
+- Project inquiry form, optional contact number, and WhatsApp handoff: `src/LeadForm.tsx`
 
 ## Local development
 
@@ -64,7 +64,7 @@ The function limits the browser to the latest ten messages, caps each message at
 
 ## Customer inquiries
 
-The contact section provides three ways to reach ClubGamerZone: a Netlify Forms project-inquiry form, direct email/phone links, and the AI assistant. `index.html` contains the hidden static form definition Netlify needs for build-time form detection; `src/LeadForm.tsx` contains the visible React form and its success/error states. Submissions appear in **Netlify → clubgamerzone-webapp → Forms**.
+The contact section provides three ways to reach ClubGamerZone: a WhatsApp project-inquiry handoff, direct email/phone links, and the AI assistant. `src/LeadForm.tsx` formats the visitor's name, email, optional WhatsApp number, project type, and description into a message addressed to `+57 301 273 1004`. The visitor reviews and sends it from WhatsApp, so this flow does not depend on Netlify Forms or external messaging credentials.
 
 The public portfolio section lists only projects and client work that were already presented on the previous public ClubGamerZone website. Add a client name only after confirming that the relationship may be advertised publicly.
 

@@ -18,6 +18,12 @@ The chat is a commercial project-inquiry assistant, not a general-purpose assist
 
 Quotation conversations gather the goal, users, features, platforms, integrations, timeline, and budget range. The assistant never invents a numeric price or final delivery date; the ClubGamerZone team confirms the final quotation personally.
 
+## WhatsApp inquiry handoff
+
+The project form in `src/LeadForm.tsx` opens a WhatsApp conversation with `+57 301 273 1004`. It pre-fills the visitor's name, email, optional WhatsApp number, project type, and description. The visitor reviews the message and taps Send; no message is transmitted silently and no WhatsApp API credentials are stored in the website.
+
+An automated WhatsApp AI conversation is a separate integration. It requires a WhatsApp Business Platform number, a webhook/serverless endpoint, Meta credentials stored as server-side environment variables, and conversation/privacy controls. The existing web assistant's scope and qualification prompt can be reused, but the channel should not be presented as active until those credentials and the business number are configured and tested.
+
 ## Credentials
 
 The function prefers Netlify's runtime-injected variables:
