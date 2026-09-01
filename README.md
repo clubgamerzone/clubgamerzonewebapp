@@ -97,6 +97,15 @@ Before changing DNS:
 4. Leave all mail records untouched.
 5. Test the root domain, `www`, inbound email, and outbound email after propagation.
 
+### Current custom-domain setup (2026-08-31)
+
+`clubgamerzone.com` and `www.clubgamerzone.com` are attached to the Netlify project and awaiting external DNS verification. Netlify provided these records:
+
+- Apex/root `A`: `75.2.60.5`
+- `www` `CNAME`: `clubgamerzone-webapp.netlify.app`
+
+The authoritative nameservers are `ns8521.hostgator.com` and `ns8522.hostgator.com`, so the active zone must be edited in HostGator even though the domain is registered at GoDaddy. Before the change, the root and `mail` both resolved to `108.167.172.144`, `www` was a CNAME to the root, and the MX record targeted `mail.clubgamerzone.com`. Change only the root `A` and `www` CNAME; retain `mail`, MX, SPF, DKIM, DMARC, and all mailbox-related records.
+
 ## Content source
 
 Company history, contact information, social links, and selected project names/art were adapted from the prior public `clubgamerzone.com` website. The generated Open Graph artwork uses the same dark, aqua, and lime visual direction as the new site.
