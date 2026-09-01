@@ -59,6 +59,9 @@ export default function Home() {
     <main>
       <section className="hero" id="home">
         <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-atmosphere" aria-hidden="true"><i /><i /><i /></div>
+        <div className="hero-beam" aria-hidden="true" />
+        <div className="hero-side-note" aria-hidden="true"><span>Independent digital studio</span><i /> Barranquilla · Worldwide</div>
         <header className="site-header container">
           <a className="brand" href="#home" aria-label="ClubGamerZone home"><img src="/assets/logo.png" alt="ClubGamerZone" /></a>
           <nav aria-label="Primary navigation"><a href="#services">Services</a><a href="#work">Selected work</a><a href="#about">About</a></nav>
@@ -76,7 +79,18 @@ export default function Home() {
           <div className="proof-row" aria-label="Company highlights"><div><strong>15+</strong><span>years delivering technology</span></div><div><strong>2016</strong><span>founded in Barranquilla</span></div><div><strong>End-to-end</strong><span>strategy through launch</span></div></div>
         </div>
 
-        <div className="hero-orbit" aria-hidden="true"><div className="orbit-ring" /><div className="orbit-core"><span>CGZ</span><small>BUILD / SHIP / EVOLVE</small></div><div className="orbit-chip chip-one">AI</div><div className="orbit-chip chip-two">UNITY</div><div className="orbit-chip chip-three">CLOUD</div></div>
+        <div className="hero-orbit" aria-hidden="true">
+          <div className="orbit-halo" />
+          <div className="orbit-ring ring-primary"><i /><i /><i /></div>
+          <div className="orbit-ring ring-secondary"><i /><i /></div>
+          <div className="orbit-sweep" />
+          <div className="orbit-core"><span>CGZ</span><small>BUILD / SHIP / EVOLVE</small><b><i /> Systems online</b></div>
+          <div className="orbit-chip chip-one"><small>01</small> AI</div>
+          <div className="orbit-chip chip-two"><small>02</small> UNITY</div>
+          <div className="orbit-chip chip-three"><small>03</small> CLOUD</div>
+          <div className="orbit-data data-one"><span>Product</span><strong>ENGINEERING</strong></div>
+          <div className="orbit-data data-two"><span>Mode</span><strong>BUILDING</strong></div>
+        </div>
       </section>
 
       <section className="services-band" id="services"><div className="container service-grid">{services.map(({ icon: Icon, title, copy }) => <article className="service-card" key={title}><Icon size={22} strokeWidth={1.7} /><h2>{title}</h2><p>{copy}</p></article>)}</div></section>

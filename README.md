@@ -13,6 +13,8 @@ Professional marketing site for ClubGamerZone, focused on software development, 
 - React entry point: `src/main.tsx`
 - Customer AI chat interface: `src/ChatWidget.tsx`
 - Secure AI server function and business knowledge: `netlify/functions/chat.mjs`
+
+The hero motion system is implemented entirely in `app/page.tsx` and `app/globals.css`: layered ambient light, drifting grid and particles, staggered content reveals, a multi-ring product orbit, data labels, and reduced-motion fallbacks. No animation library is required.
 - Project inquiry form and submission states: `src/LeadForm.tsx`
 
 ## Local development
