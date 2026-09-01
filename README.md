@@ -106,7 +106,7 @@ Before changing DNS:
 - Apex/root `A`: `75.2.60.5`
 - `www` `CNAME`: `clubgamerzone-webapp.netlify.app`
 
-The authoritative nameservers are `ns8521.hostgator.com` and `ns8522.hostgator.com`, so the active zone must be edited in HostGator even though the domain is registered at GoDaddy. Before the change, the root and `mail` both resolved to `108.167.172.144`, `www` was a CNAME to the root, and the MX record targeted `mail.clubgamerzone.com`. Change only the root `A` and `www` CNAME; retain `mail`, MX, SPF, DKIM, DMARC, and all mailbox-related records.
+The public domain still uses the Baby plan nameservers `ns8521.hostgator.com` and `ns8522.hostgator.com`, while the migrated Business plan zone is configured for `hgns1.hostgator.com` and `hgns2.hostgator.com`. The Business cPanel zone now has the Netlify root `A` and `www` CNAME above, plus its existing Business mail records (`MX` to `mail.clubgamerzone.com`, `mail` A to `192.254.227.41`, and its SPF, DKIM, DMARC, autodiscovery, and related records). GoDaddy must switch the domain to the Business nameservers before the Baby plan can be safely canceled. Do not delete or replace the Business mail records during that switch.
 
 ## Content source
 
