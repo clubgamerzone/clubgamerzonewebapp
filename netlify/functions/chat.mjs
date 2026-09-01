@@ -20,10 +20,25 @@ const headers = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
+function getAiGatewayConfig() {
+  const gatewayKey = process.env.NETLIFY_AI_GATEWAY_KEY;
+  const providerKey = process.env.OPENAI_API_KEY;
+  const apiKey = gatewayKey || providerKey;
+  const baseUrl = (
+    (gatewayKey && process.env.NETLIFY_AI_GATEWAY_BASE_URL) ||
+    process.env.OPENAI_BASE_URL ||
+    'https://api.openai.com'
+  ).replace(/\/$/, '');
+
+  return { apiKey, baseUrl };
+}
+
 const handler = async request => {
   if (request.method === 'OPTIONS') return new Response('', { status: 204, headers });
   if (request.method !== 'POST') return Response.json({ error: 'Method not allowed.' }, { status: 405, headers });
-  if (!process.env.OPENAI_API_KEY) return Response.json({ error: 'Assistant configuration is incomplete.' }, { status: 503, headers });
+
+  const { apiKey, baseUrl } = getAiGatewayConfig();
+  if (!apiKey) return Response.json({ error: 'Assistant configuration is incomplete.' }, { status: 503, headers });
 
   try {
     const body = await request.json();
@@ -36,21 +51,19 @@ const handler = async request => {
       return Response.json({ error: 'A message is required.' }, { status: 400, headers });
     }
 
-    const response = await fetch('https://api.openai.com/v1/responses', {
+    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
       body: JSON.stringify({
         model: process.env.OPENAI_MODEL || 'gpt-5.4-nano',
-        instructions: SYSTEM_PROMPT,
-        input: safeMessages,
-        max_output_tokens: 350,
-        store: false,
+        messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...safeMessages],
+        max_completion_tokens: 450,
       }),
     });
 
     const result = await response.json();
     if (!response.ok) throw new Error(result?.error?.message || 'OpenAI request failed.');
-    const reply = result.output_text || result.output?.flatMap(item => item.content || []).find(item => item.type === 'output_text')?.text;
+    const reply = result.choices?.[0]?.message?.content;
     if (!reply) throw new Error('No response text returned.');
     return Response.json({ reply }, { status: 200, headers });
   } catch (error) {
@@ -60,3 +73,4 @@ const handler = async request => {
 };
 
 export default handler;
+
