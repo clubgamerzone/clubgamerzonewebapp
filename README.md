@@ -70,11 +70,11 @@ The public portfolio section lists only projects and client work that were alrea
 
 Portfolio artwork is matched to the project headings on the previous public `/gamedevelopment/` page, rather than inferred from old local filenames:
 
-- `instruments-of-faith.jpg` → Instruments of Faith
+- `instruments-of-faith-v2.jpg` → Instruments of Faith
 - `save-the-pets.png` → Save the Pets
 - `word-crush.jpg` → Word Crush — Languages
-- `goal-music.jpg` → The Goal Music
-- `animatch.webp` → Animatch
+- `goal-music-v2.jpg` → The Goal Music
+- `animatch-v2.webp` → Animatch
 - `verneverse.png` → Verneverse
 - `golden-buddha.png` → Golden Buddha
 - `space-blast.png` → Space Blast

@@ -30,10 +30,10 @@ const capabilities = [
 
 const projects = [
   { title: 'Hell Cemetery', type: 'Original survival horror game', image: '/assets/hell-cemetery.png', wide: true },
-  { title: 'Instruments of Faith', type: 'Hardcore pixel-art metroidvania', image: '/assets/instruments-of-faith.jpg' },
-  { title: 'The Goal Music', type: 'Music and football game', image: '/assets/goal-music.jpg' },
+  { title: 'Instruments of Faith', type: 'Hardcore pixel-art metroidvania', image: '/assets/instruments-of-faith-v2.jpg' },
+  { title: 'The Goal Music', type: 'Music and football game', image: '/assets/goal-music-v2.jpg' },
   { title: 'Verneverse', type: 'Immersive multiplayer experience', image: '/assets/verneverse.png' },
-  { title: 'Animatch', type: 'Pet-themed match-box puzzle', image: '/assets/animatch.webp' },
+  { title: 'Animatch', type: 'Pet-themed match-box puzzle', image: '/assets/animatch-v2.webp' },
   { title: 'Golden Buddha', type: 'Online casino game experience', image: '/assets/golden-buddha.png' },
   { title: 'Save the Pets', type: 'Social-impact mobile game', image: '/assets/save-the-pets.png' },
   { title: 'Space Blast', type: 'Arcade action game', image: '/assets/space-blast.png' },
