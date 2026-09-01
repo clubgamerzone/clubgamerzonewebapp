@@ -81,6 +81,10 @@ Portfolio artwork is matched to the project headings on the previous public `/ga
 - `veolia.png` → Veolia — Heavy Clues
 - `hell-cemetery.png` → Hell Cemetery
 
+### Verified portfolio links
+
+Project cards and the compact portfolio list reuse the public destinations from the previous `/gamedevelopment/` page. Hell Cemetery, Instruments of Faith, The Goal Music, Verneverse, Animatch, Save the Pets, Space Blast, and Word Crush open their verified store or live-project pages in a new tab. Golden Buddha's old Netlify demo currently returns `404`, and the Veolia detail page would disappear when `clubgamerzone.com` moves away from WordPress, so those two cards lead to the site's inquiry section instead of a broken destination.
+
 ## Domain and email safety
 
 The website can be pointed to Netlify by changing only the web records for `clubgamerzone.com` and `www`. Do **not** remove or replace MX, SPF, DKIM, DMARC, `mail`, `webmail`, or other email-related DNS records. Using Netlify for the website does not replace email hosting.
