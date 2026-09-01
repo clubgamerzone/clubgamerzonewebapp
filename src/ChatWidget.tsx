@@ -88,3 +88,4 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
     </div>
   );
 }
+

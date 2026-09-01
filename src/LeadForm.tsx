@@ -43,3 +43,4 @@ export default function LeadForm({ locale }: { locale: Locale }) {
     <small>{c.privacy}</small>
   </form>;
 }
+
