@@ -1,22 +1,18 @@
 import { Bot, LoaderCircle, MessageCircle, Send, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import type { Locale } from '../app/page';
 
 type ChatMessage = { role: 'assistant' | 'user'; content: string };
 
-const greeting: ChatMessage = {
-  role: 'assistant',
-  content: 'Hi! I’m the ClubGamerZone assistant. Tell me what you want to build, improve, or automate, and I’ll help you explore the next step.',
-};
+const copy = {
+  en: { greeting: 'Hi! I’m the ClubGamerZone assistant. Tell me what you want to build, improve, or automate, and I’ll help you explore the next step.', suggestions: ['Can you build my app idea?', 'How can AI help my business?', 'I need a website'], ready: 'Ready to help', close: 'Close chat', thinking: 'Thinking…', message: 'Your message', placeholder: 'What would you like to build?', send: 'Send message', disclaimer: 'AI can make mistakes. Project estimates are confirmed by our team.', launcher: 'Ask our AI', openLabel: 'Ask our AI assistant', closeLabel: 'Close AI assistant', fallback: 'I’m having trouble connecting right now. Please email admin@clubgamerzone.com or call +57 301 273 1004 and our team will help you.', panel: 'Chat with ClubGamerZone' },
+  es: { greeting: '¡Hola! Soy el asistente de ClubGamerZone. Cuéntame qué quieres construir, mejorar o automatizar y te ayudaré a explorar el siguiente paso.', suggestions: ['¿Pueden desarrollar mi idea de aplicación?', '¿Cómo puede ayudar la IA a mi negocio?', 'Necesito un sitio web'], ready: 'Listo para ayudarte', close: 'Cerrar chat', thinking: 'Pensando…', message: 'Tu mensaje', placeholder: '¿Qué te gustaría construir?', send: 'Enviar mensaje', disclaimer: 'La IA puede cometer errores. Nuestro equipo confirma las estimaciones del proyecto.', launcher: 'Pregunta a nuestra IA', openLabel: 'Consultar a nuestro asistente de IA', closeLabel: 'Cerrar asistente de IA', fallback: 'Tengo problemas para conectarme en este momento. Escríbenos a admin@clubgamerzone.com o llama al +57 301 273 1004 y nuestro equipo te ayudará.', panel: 'Chatea con ClubGamerZone' },
+} as const;
 
-const suggestions = [
-  'Can you build my app idea?',
-  'How can AI help my business?',
-  'I need a website',
-];
-
-export default function ChatWidget() {
+export default function ChatWidget({ locale }: { locale: Locale }) {
+  const c = copy[locale];
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([greeting]);
+  const [messages, setMessages] = useState<ChatMessage[]>([{ role: 'assistant', content: copy.en.greeting }]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
@@ -24,6 +20,10 @@ export default function ChatWidget() {
   useEffect(() => {
     if (open) endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, open]);
+
+  useEffect(() => {
+    setMessages(current => current.length === 1 && current[0].role === 'assistant' ? [{ role: 'assistant', content: c.greeting }] : current);
+  }, [c.greeting]);
 
   async function sendMessage(text: string) {
     const trimmed = text.trim();
@@ -47,7 +47,7 @@ export default function ChatWidget() {
     } catch {
       setMessages(current => [...current, {
         role: 'assistant',
-        content: 'I’m having trouble connecting right now. Please email admin@clubgamerzone.com or call +57 301 273 1004 and our team will help you.',
+        content: c.fallback,
       }]);
     } finally {
       setLoading(false);
@@ -62,29 +62,30 @@ export default function ChatWidget() {
   return (
     <div className="chat-widget">
       {open && (
-        <section className="chat-panel" aria-label="Chat with ClubGamerZone">
+        <section className="chat-panel" aria-label={c.panel}>
           <header className="chat-header">
-            <div className="chat-identity"><span><Bot size={20} /></span><div><strong>ClubGamerZone AI</strong><small><i /> Ready to help</small></div></div>
-            <button onClick={() => setOpen(false)} aria-label="Close chat"><X size={20} /></button>
+            <div className="chat-identity"><span><Bot size={20} /></span><div><strong>ClubGamerZone AI</strong><small><i /> {c.ready}</small></div></div>
+            <button onClick={() => setOpen(false)} aria-label={c.close}><X size={20} /></button>
           </header>
           <div className="chat-body" aria-live="polite">
             {messages.map((message, index) => <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>{message.content}</div>)}
-            {messages.length === 1 && <div className="chat-suggestions">{suggestions.map(item => <button key={item} onClick={() => void sendMessage(item)}>{item}</button>)}</div>}
-            {loading && <div className="chat-message assistant chat-loading"><LoaderCircle size={16} /> Thinking…</div>}
+            {messages.length === 1 && <div className="chat-suggestions">{c.suggestions.map(item => <button key={item} onClick={() => void sendMessage(item)}>{item}</button>)}</div>}
+            {loading && <div className="chat-message assistant chat-loading"><LoaderCircle size={16} /> {c.thinking}</div>}
             <div ref={endRef} />
           </div>
           <form className="chat-form" onSubmit={submit}>
-            <label className="sr-only" htmlFor="chat-input">Your message</label>
-            <input id="chat-input" value={input} onChange={event => setInput(event.target.value)} maxLength={600} placeholder="What would you like to build?" autoComplete="off" />
-            <button type="submit" disabled={!input.trim() || loading} aria-label="Send message"><Send size={18} /></button>
+            <label className="sr-only" htmlFor="chat-input">{c.message}</label>
+            <input id="chat-input" value={input} onChange={event => setInput(event.target.value)} maxLength={600} placeholder={c.placeholder} autoComplete="off" />
+            <button type="submit" disabled={!input.trim() || loading} aria-label={c.send}><Send size={18} /></button>
           </form>
-          <p className="chat-disclaimer">AI can make mistakes. Project estimates are confirmed by our team.</p>
+          <p className="chat-disclaimer">{c.disclaimer}</p>
         </section>
       )}
-      <button className="chat-launcher" onClick={() => setOpen(current => !current)} aria-expanded={open} aria-label={open ? 'Close AI assistant' : 'Ask our AI assistant'}>
+      <button className="chat-launcher" onClick={() => setOpen(current => !current)} aria-expanded={open} aria-label={open ? c.closeLabel : c.openLabel}>
         {open ? <X size={24} /> : <MessageCircle size={25} />}
-        {!open && <span>Ask our AI</span>}
+        {!open && <span>{c.launcher}</span>}
       </button>
     </div>
   );
 }
+
