@@ -4,6 +4,12 @@ The customer chat interface is in `src/ChatWidget.tsx`. It sends the latest conv
 
 The server-side implementation is `netlify/functions/chat.mjs`. It uses Netlify AI Gateway at request time and never exposes credentials to the browser.
 
+## Conversation voice
+
+The system prompt answers in Jose Demoya's warm, practical voice while representing ClubGamerZone with first-person language such as “we” and “our.” Replies should feel like a concise founder conversation: acknowledge the visitor's specific idea, give useful guidance, and ask one natural discovery question. Avoid generic AI-style introductions, long canned lists, invented personal experiences, and repeated self-introductions.
+
+The widget remains transparent that the conversation is AI-powered, while making clear that the team personally confirms project details and estimates. Its English and Spanish greeting, launcher, status, and disclaimer copy live in `src/ChatWidget.tsx`.
+
 ## Credentials
 
 The function prefers Netlify's runtime-injected variables:
