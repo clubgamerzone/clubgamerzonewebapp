@@ -110,6 +110,8 @@ On 2026-08-31, GoDaddy accepted the nameserver change from the Baby pair (`ns852
 
 The Business cPanel zone has the Netlify root `A` and `www` CNAME above, plus its existing Business mail records (`MX` to `mail.clubgamerzone.com`, `mail` A to `192.254.227.41`, and its SPF, DKIM, DMARC, autodiscovery, and related records). A post-change check found that the zone's own apex `NS` records still return the Baby pair even when queried directly through `hgns1`/`hgns2`. Update those two zone records to `hgns1.hostgator.com` and `hgns2.hostgator.com` in Business cPanel, then recheck the authoritative and public answers. Do not delete or replace the Business mail records.
 
+HostGator support was contacted on 2026-08-31. The GoDaddy screenshot showing `hgns1`/`hgns2` was provided. The agent initially attributed the mismatch to the normal 24–48 hour propagation window; we clarified that direct queries to both authoritative Business servers still return the Baby NS pair and requested verification or escalation to the backend DNS team. The chat was still awaiting their technical response at the end of this check.
+
 Do not cancel the Baby plan until the public NS answers show the Business pair, the root and `www` load from Netlify with valid HTTPS, and inbound/outbound mail tests succeed through the migrated Business mailboxes.
 
 ## Content source
