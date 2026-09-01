@@ -12,7 +12,7 @@ const copy = {
 export default function ChatWidget({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([{ role: 'assistant', content: copy.en.greeting }]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
@@ -21,15 +21,13 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
     if (open) endRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, open]);
 
-  useEffect(() => {
-    setMessages(current => current.length === 1 && current[0].role === 'assistant' ? [{ role: 'assistant', content: c.greeting }] : current);
-  }, [c.greeting]);
+  const visibleMessages: ChatMessage[] = messages.length ? messages : [{ role: 'assistant', content: c.greeting }];
 
   async function sendMessage(text: string) {
     const trimmed = text.trim();
     if (!trimmed || loading) return;
 
-    const nextMessages = [...messages, { role: 'user' as const, content: trimmed }];
+    const nextMessages = [...visibleMessages, { role: 'user' as const, content: trimmed }];
     setMessages(nextMessages);
     setInput('');
     setLoading(true);
@@ -68,8 +66,8 @@ export default function ChatWidget({ locale }: { locale: Locale }) {
             <button onClick={() => setOpen(false)} aria-label={c.close}><X size={20} /></button>
           </header>
           <div className="chat-body" aria-live="polite">
-            {messages.map((message, index) => <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>{message.content}</div>)}
-            {messages.length === 1 && <div className="chat-suggestions">{c.suggestions.map(item => <button key={item} onClick={() => void sendMessage(item)}>{item}</button>)}</div>}
+            {visibleMessages.map((message, index) => <div className={`chat-message ${message.role}`} key={`${message.role}-${index}`}>{message.content}</div>)}
+            {messages.length === 0 && <div className="chat-suggestions">{c.suggestions.map(item => <button key={item} onClick={() => void sendMessage(item)}>{item}</button>)}</div>}
             {loading && <div className="chat-message assistant chat-loading"><LoaderCircle size={16} /> {c.thinking}</div>}
             <div ref={endRef} />
           </div>
