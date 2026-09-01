@@ -66,6 +66,21 @@ The contact section provides three ways to reach ClubGamerZone: a Netlify Forms 
 
 The public portfolio section lists only projects and client work that were already presented on the previous public ClubGamerZone website. Add a client name only after confirming that the relationship may be advertised publicly.
 
+### Verified portfolio image mapping
+
+Portfolio artwork is matched to the project headings on the previous public `/gamedevelopment/` page, rather than inferred from old local filenames:
+
+- `instruments-of-faith.jpg` → Instruments of Faith
+- `save-the-pets.png` → Save the Pets
+- `word-crush.jpg` → Word Crush — Languages
+- `goal-music.jpg` → The Goal Music
+- `animatch.webp` → Animatch
+- `verneverse.png` → Verneverse
+- `golden-buddha.png` → Golden Buddha
+- `space-blast.png` → Space Blast
+- `veolia.png` → Veolia — Heavy Clues
+- `hell-cemetery.png` → Hell Cemetery
+
 ## Domain and email safety
 
 The website can be pointed to Netlify by changing only the web records for `clubgamerzone.com` and `www`. Do **not** remove or replace MX, SPF, DKIM, DMARC, `mail`, `webmail`, or other email-related DNS records. Using Netlify for the website does not replace email hosting.

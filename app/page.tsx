@@ -30,13 +30,15 @@ const capabilities = [
 
 const projects = [
   { title: 'Hell Cemetery', type: 'Original survival horror game', image: '/assets/hell-cemetery.png', wide: true },
-  { title: 'Instruments of Faith', type: 'Story-driven action adventure', image: '/assets/save-the-pets.jpg' },
-  { title: 'The Goal Music', type: 'Music and entertainment platform', image: '/assets/goal-music.jpg' },
-  { title: 'Verneverse', type: 'Interactive digital universe', image: '/assets/verneverse.png' },
-  { title: 'Animatch', type: 'Mobile puzzle experience', image: '/assets/animatch.jpg' },
-  { title: 'Golden Buddha', type: 'Atmospheric interactive adventure', image: '/assets/golden-buddha.png' },
-  { title: 'Save the Pets', type: 'Colorful mobile game', image: '/assets/instruments-of-faith.jpg' },
+  { title: 'Instruments of Faith', type: 'Hardcore pixel-art metroidvania', image: '/assets/instruments-of-faith.jpg' },
+  { title: 'The Goal Music', type: 'Music and football game', image: '/assets/goal-music.jpg' },
+  { title: 'Verneverse', type: 'Immersive multiplayer experience', image: '/assets/verneverse.png' },
+  { title: 'Animatch', type: 'Pet-themed match-box puzzle', image: '/assets/animatch.webp' },
+  { title: 'Golden Buddha', type: 'Online casino game experience', image: '/assets/golden-buddha.png' },
+  { title: 'Save the Pets', type: 'Social-impact mobile game', image: '/assets/save-the-pets.png' },
   { title: 'Space Blast', type: 'Arcade action game', image: '/assets/space-blast.png' },
+  { title: 'Word Crush — Languages', type: 'Language-learning puzzle game', image: '/assets/word-crush.jpg' },
+  { title: 'Veolia — Heavy Clues', type: 'Enterprise training game', image: '/assets/veolia.png' },
 ];
 
 const portfolioIndex = [
