@@ -12,6 +12,12 @@ Language is determined from the visitor's latest message, not from ClubGamerZone
 
 The widget remains transparent that the conversation is AI-powered, while making clear that the team personally confirms project details and estimates. Its English and Spanish greeting, launcher, status, and disclaimer copy live in `src/ChatWidget.tsx`.
 
+## Scope boundary
+
+The chat is a commercial project-inquiry assistant, not a general-purpose assistant. It may discuss ClubGamerZone services, portfolio, delivery process, contact information, prospective development projects, and quotation requests. It must redirect general knowledge, news, politics, entertainment, personal advice, schoolwork, trivia, unrelated technical support, and standalone coding or debugging requests without answering them.
+
+Quotation conversations gather the goal, users, features, platforms, integrations, timeline, and budget range. The assistant never invents a numeric price or final delivery date; the ClubGamerZone team confirms the final quotation personally.
+
 ## Credentials
 
 The function prefers Netlify's runtime-injected variables:
@@ -38,3 +44,4 @@ Send a POST request to `https://clubgamerzone.com/.netlify/functions/chat` with 
 ```
 
 A healthy response has HTTP status `200` and a JSON `reply`. A `503` response means the gateway/provider credentials were not injected. A `500` response means the provider call failed; inspect the Netlify function log without logging credentials or full customer conversations.
+
