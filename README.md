@@ -64,7 +64,7 @@ The function limits the browser to the latest ten messages, caps each message at
 
 ## Customer inquiries
 
-The contact section provides three ways to reach ClubGamerZone: a WhatsApp project-inquiry handoff, direct email/phone links, and the AI assistant. `src/LeadForm.tsx` formats the visitor's name, email, optional WhatsApp number, project type, and description into a message addressed to `+57 301 273 1004`. The visitor reviews and sends it from WhatsApp, so this flow does not depend on Netlify Forms or external messaging credentials.
+The contact section provides three ways to reach ClubGamerZone: a WhatsApp project-inquiry handoff, direct email/phone links, and the AI assistant. `src/LeadForm.tsx` formats the visitor's name, email, optional WhatsApp number, project type, and description into a message addressed to the temporary contact number `+57 305 483 9092`. The visitor reviews and sends it from WhatsApp, so this flow does not depend on Netlify Forms or external messaging credentials.
 
 The public portfolio section lists only projects and client work that were already presented on the previous public ClubGamerZone website. Add a client name only after confirming that the relationship may be advertised publicly.
 
