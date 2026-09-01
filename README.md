@@ -106,7 +106,11 @@ Before changing DNS:
 - Apex/root `A`: `75.2.60.5`
 - `www` `CNAME`: `clubgamerzone-webapp.netlify.app`
 
-The public domain still uses the Baby plan nameservers `ns8521.hostgator.com` and `ns8522.hostgator.com`, while the migrated Business plan zone is configured for `hgns1.hostgator.com` and `hgns2.hostgator.com`. The Business cPanel zone now has the Netlify root `A` and `www` CNAME above, plus its existing Business mail records (`MX` to `mail.clubgamerzone.com`, `mail` A to `192.254.227.41`, and its SPF, DKIM, DMARC, autodiscovery, and related records). GoDaddy must switch the domain to the Business nameservers before the Baby plan can be safely canceled. Do not delete or replace the Business mail records during that switch.
+On 2026-08-31, GoDaddy accepted the nameserver change from the Baby pair (`ns8521.hostgator.com` / `ns8522.hostgator.com`) to the Business pair (`hgns1.hostgator.com` / `hgns2.hostgator.com`). The `.com` parent delegation already reports the Business pair, while recursive caches may continue returning the Baby pair until their TTL expires.
+
+The Business cPanel zone has the Netlify root `A` and `www` CNAME above, plus its existing Business mail records (`MX` to `mail.clubgamerzone.com`, `mail` A to `192.254.227.41`, and its SPF, DKIM, DMARC, autodiscovery, and related records). A post-change check found that the zone's own apex `NS` records still return the Baby pair even when queried directly through `hgns1`/`hgns2`. Update those two zone records to `hgns1.hostgator.com` and `hgns2.hostgator.com` in Business cPanel, then recheck the authoritative and public answers. Do not delete or replace the Business mail records.
+
+Do not cancel the Baby plan until the public NS answers show the Business pair, the root and `www` load from Netlify with valid HTTPS, and inbound/outbound mail tests succeed through the migrated Business mailboxes.
 
 ## Content source
 
