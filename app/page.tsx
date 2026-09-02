@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, BrainCircuit, BriefcaseBusiness, Check, CloudCog
 import { useEffect, useState } from 'react';
 import ChatWidget from '../src/ChatWidget';
 import LeadForm from '../src/LeadForm';
+import PrivacyPolicy from '../src/PrivacyPolicy';
 
 export type Locale = 'en' | 'es';
 
@@ -180,7 +181,7 @@ function ServicesPage({ locale, chooseLocale }: { locale: Locale; chooseLocale: 
       <section className="services-page-hero"><div className="hero-grid" aria-hidden="true" /><div className="container services-page-hero-content"><a className="back-link" href="/"><ArrowLeft size={16} /> {c.servicesPage.back}</a><p className="eyebrow"><span /> {c.servicesPage.eyebrow}</p><h1>{c.servicesPage.title}</h1><p>{c.servicesPage.copy}</p><a className="button button-primary" href="/#contact">{c.servicesPage.cta} <ArrowRight size={18} /></a></div></section>
       <section className="section service-detail-section"><div className="container"><div className="section-heading"><p className="kicker">{c.servicesPage.included}</p><h2>{c.capabilitiesIntro[1]}</h2><p>{c.capabilitiesIntro[2]}</p></div><div className="service-detail-grid">{c.servicesPage.details.map(([title, copy, items], index) => { const Icon = serviceIcons[index]; return <article className="service-detail-card" key={title}><div className="service-detail-icon"><Icon size={24} /></div><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{copy}</p><ul>{items.map(item => <li key={item}><Check size={15} /> {item}</li>)}</ul></article>; })}</div></div></section>
       <section className="section leadership-section"><div className="container leadership-layout"><div><p className="kicker">{c.servicesPage.leadershipKicker}</p><h2>{c.servicesPage.leadershipTitle}</h2><p>{c.servicesPage.leadershipCopy}</p><a className="button button-primary" href="/#contact">{c.servicesPage.cta} <ArrowRight size={18} /></a></div><div className="leadership-points">{c.servicesPage.leadershipPoints.map((point, index) => <div key={point}><span>{String(index + 1).padStart(2, '0')}</span><strong>{point}</strong></div>)}</div></div></section>
-      <footer><div className="container footer-inner"><img src="/assets/logo.png" alt="ClubGamerZone" /><p>{c.footer}</p><div className="socials"><a href="https://www.linkedin.com/company/clubgamerzonesoftware/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/clubgamerzone/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.youtube.com/c/clubgamerzone" target="_blank" rel="noreferrer">YouTube</a></div><small>© {new Date().getFullYear()} ClubGamerZone. {c.rights}</small></div></footer>
+      <footer><div className="container footer-inner"><img src="/assets/logo.png" alt="ClubGamerZone" /><p>{c.footer}</p><div className="socials"><a href="https://www.linkedin.com/company/clubgamerzonesoftware/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/clubgamerzone/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.youtube.com/c/clubgamerzone" target="_blank" rel="noreferrer">YouTube</a><a href="/privacy-policy">{locale === 'es' ? 'Privacidad' : 'Privacy'}</a></div><small>© {new Date().getFullYear()} ClubGamerZone. {c.rights}</small></div></footer>
       <ChatWidget locale={locale} />
     </main>
   );
@@ -210,6 +211,7 @@ export default function Home() {
   }
 
   if (window.location.pathname.replace(/\/+$/, '') === '/services') return <ServicesPage locale={locale} chooseLocale={chooseLocale} />;
+  if (window.location.pathname.replace(/\/+$/, '') === '/privacy-policy') return <PrivacyPolicy locale={locale} chooseLocale={chooseLocale} />;
 
   const featuredProjects = projects.filter(project => project.featured && (workFilter === 'all' || project.category === workFilter || (workFilter === 'mobile' && project.category === 'web')));
   const archiveProjects = projects.filter(project => !project.featured && (workFilter === 'all' || project.category === workFilter || (workFilter === 'mobile' && project.category === 'web')));
@@ -240,7 +242,7 @@ export default function Home() {
 
       <section className="contact-section" id="contact"><div className="contact-glow" aria-hidden="true" /><div className="container contact-layout"><div><p className="kicker">{c.contact.kicker}</p><h2>{c.contact.title}</h2><p>{c.contact.copy}</p><div className="contact-direct"><a href="mailto:admin@clubgamerzone.com"><Mail size={17}/> admin@clubgamerzone.com</a><a href="tel:+573054839092"><Phone size={17}/> +57 305 483 9092</a></div><aside className="contact-card"><div><MapPin size={19} /><span><small>{c.contact.studio}</small>{c.contact.studioValue}</span></div><div><CloudCog size={19} /><span><small>{c.contact.availability}</small>{c.contact.availabilityValue}</span></div></aside></div><LeadForm locale={locale} /></div></section>
 
-      <footer><div className="container footer-inner"><img src="/assets/logo.png" alt="ClubGamerZone" /><p>{c.footer}</p><div className="socials"><a href="https://www.linkedin.com/company/clubgamerzonesoftware/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/clubgamerzone/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.youtube.com/c/clubgamerzone" target="_blank" rel="noreferrer">YouTube</a><a href="https://www.facebook.com/clubgamerzone/" target="_blank" rel="noreferrer">Facebook</a></div><small>© {new Date().getFullYear()} ClubGamerZone. {c.rights}</small></div></footer>
+      <footer><div className="container footer-inner"><img src="/assets/logo.png" alt="ClubGamerZone" /><p>{c.footer}</p><div className="socials"><a href="https://www.linkedin.com/company/clubgamerzonesoftware/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://www.instagram.com/clubgamerzone/" target="_blank" rel="noreferrer">Instagram</a><a href="https://www.youtube.com/c/clubgamerzone" target="_blank" rel="noreferrer">YouTube</a><a href="/privacy-policy">{locale === 'es' ? 'Privacidad' : 'Privacy'}</a></div><small>© {new Date().getFullYear()} ClubGamerZone. {c.rights}</small></div></footer>
       <ChatWidget locale={locale} />
     </main>
   );
