@@ -20,6 +20,13 @@ The SignalDesk environment requires the same `SIGNALDESK_INTAKE_TOKEN`, plus its
 
 Never add these secret values to Git, browser variables, screenshots, ordinary CRM records or this document.
 
+## Production activation status
+
+- September 3, 2026: both Netlify projects were configured with their required protected variables, and the Supabase lead-details migration was applied and verified.
+- September 3, 2026: the form implementation was pushed to GitHub in commit `35aada3`.
+- Netlify skipped the production deploy because the team had exhausted its available deploy credits for the billing cycle. The published site therefore remains on `fff80a3` and still uses the previous form until deploys resume.
+- After credits reset or the team is upgraded, publish `35aada3` or a later commit and run one clearly labeled consented test inquiry before treating the integration as production-ready.
+
 ## Captured attribution
 
 The form records name, email, optional phone, project type, project description, language, page URL and the `utm_source`, `utm_medium` and `utm_campaign` query parameters. The initial source is `Website form` and the CRM stage is `new_inquiry`.
