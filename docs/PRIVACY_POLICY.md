@@ -19,7 +19,7 @@ The page supports English and Spanish with the same language preference used by 
 ## Current website data inventory
 
 - Language preference: stored locally in the visitor's browser as `cgz-language`.
-- Project inquiry form: builds a WhatsApp message locally. The visitor reviews it before choosing whether to send it through WhatsApp.
+- Project inquiry form: sends consented project details to ClubGamerZone's protected SignalDesk CRM for review and follow-up. After confirmation, the visitor may optionally open a prefilled WhatsApp message and decide whether to send it through WhatsApp.
 - AI inquiry assistant: sends up to the last ten chat messages, each limited to 600 characters, to `/.netlify/functions/chat`. The function forwards the necessary conversation to the configured AI provider and does not intentionally write the conversation to a ClubGamerZone database.
 - Hosting: Netlify may process ordinary request, operational and security logs.
 - No Google Analytics, Meta Pixel, AdSense or other marketing tracker was found in the website code when this policy was created on September 2, 2026.
