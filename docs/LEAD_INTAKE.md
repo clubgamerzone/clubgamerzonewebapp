@@ -24,7 +24,8 @@ Never add these secret values to Git, browser variables, screenshots, ordinary C
 
 - September 3, 2026: both Netlify projects were configured with their required protected variables, and the Supabase lead-details migration was applied and verified.
 - September 3, 2026: the form implementation was pushed to GitHub in commit `35aada3`.
-- Netlify skipped the production deploy because the team had exhausted its available deploy credits for the billing cycle. The published site therefore remains on `fff80a3` and still uses the previous form until deploys resume.
+- Netlify skipped the production deploy because the team had exhausted its available deploy credits for the billing cycle. The dashboard shows the current free-plan cycle as September 1-30 and the remaining operational credits expiring September 30. The published site therefore remains on `fff80a3` and still uses the previous form until deploys resume.
+- The same source was also published as private version 8 of the existing ClubGamerZone Sites deployment for owner review. That private deployment does not replace `clubgamerzone.com` or Netlify's production function configuration.
 - After credits reset or the team is upgraded, publish `35aada3` or a later commit and run one clearly labeled consented test inquiry before treating the integration as production-ready.
 
 ## Captured attribution
